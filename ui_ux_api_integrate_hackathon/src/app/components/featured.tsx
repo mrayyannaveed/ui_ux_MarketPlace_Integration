@@ -2,31 +2,27 @@ import React from 'react'
 import SectionHeading from './sectionHeading'
 import FeaturedBoxes from './featuredBoxes'
 import New from './new'
+import { sanityFetch } from '@/sanity/lib/fetch'
+import { allproducts } from '@/sanity/lib/queries'
 
-const Featured = (props:any) => {
+const Featured = async (props:any) => {
     let heading;
     if(props.head == null){
         heading = "Featured Products"
     } else {
         heading = props.head
     }
-    type pro = {
-        image: string,
-        alt: string,
-        alt2: string,
-        name: string,
-        price: string,
-        cart: string,
-        new?: {}
-        bg?: {}
+
+    type productsType = {
+        title: string,
+        price: number,
+        imageUrl: string,
+        description?: string,
     }
-    
-    let featuredBoxes: pro[] = [
-        {image: "/featured/Image.png", alt: "featured1", name: "Library Stool chair", price: "$20", cart: "/featured/Cart1.png", new: <New text={"New"} bg={"#00FF66"}/>, alt2: "cart1", bg: "#029FAE"},
-        {image: "/featured/Image1.png", alt: "featured2", name: "Library Stool chair", price: "$20", cart: "/featured/Cart.png", new: <New text={"Sales"} bg={"#F5813F"}/>, alt2: "cart",bg: "#fff"},
-        {image: "/featured/Image2.png", alt: "featured3", name: "Library Stool chair", price: "$20", cart: "/featured/Cart.png", alt2: "cart",bg: "#fff"},
-        {image: "/featured/Image3.png", alt: "featured4", name: "Library Stool chair", price: "$20", cart: "/featured/Cart.png", alt2: "cart",bg: "#fff"},
-    ]
+
+    const products : productsType[] = await sanityFetch({query: allproducts})
+    console.log(products)
+
   return (
     <div className='mb-20'>
         <section className='flex justify-center'>
@@ -35,9 +31,9 @@ const Featured = (props:any) => {
                 <SectionHeading head={heading}/>
                 </div>
                 <section className='grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4  gap-10'>
-                    {featuredBoxes.map((products) => {
+                    {products.map((product: productsType) => {
                         return(
-                            <FeaturedBoxes image={products.image} alt={products.alt} name={products.name} price={products.price} cart={products.cart} new={products.new} bg={products.bg}/>
+                            <FeaturedBoxes image={product.imageUrl} alt={product.title} desc={product.description} name={product.title} price={product.price} />
                         )
                     })}
                 </section>
