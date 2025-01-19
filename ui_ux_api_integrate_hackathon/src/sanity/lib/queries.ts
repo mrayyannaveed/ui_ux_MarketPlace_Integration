@@ -28,6 +28,20 @@ export const fourProducts = defineQuery(`
     }
     `)
 
+export const fiveProducts = defineQuery(`
+    *[_type == "products"][0..4]{
+    title,
+    price,
+    priceWithoutDiscount,
+    badge,
+    category,
+    description,
+    inventory,
+    tags,
+    "imageUrl": image.asset->url
+    }
+    `)
+
 
 
     

@@ -2,17 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { propsType } from '@/sanity/schemaTypes/types'
 
-type propsType = {
-  name: string,
-  alt: string,
-  price: number,
-  image: string
-  desc?: string,
-}
+
 
 const FeaturedBoxes = (props:propsType) => {
-  // console.log(props)
+  console.log(props)
   return (
     <div>
         <div className="bg-[#f1ede7] py-3 shadow-lg text-ellipsis" id="btn_div">

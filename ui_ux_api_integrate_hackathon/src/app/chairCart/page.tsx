@@ -4,22 +4,15 @@ import { Button } from '@/components/ui/button'
 import SectionHeading from '../components/sectionHeading'
 import ProductPage from '../components/productPage'
 import Link from 'next/link'
+import { productsType } from '@/sanity/schemaTypes/types'
+import { sanityFetch } from '@/sanity/lib/fetch'
+import { fiveProducts } from '@/sanity/lib/queries'
 
-const Chair = () => {
-  type pro = {
-    image: string,
-    alt: string,
-    name: string,
-    price: string
-}
+const Chair = async () => {
 
-let featuredBoxes: pro[] = [
-    {image: "/productPage/Image1.png", alt: "chair", name: "Library Stool chair", price: "$90"},
-    {image: "/productPage/Image2.png", alt: "chair", name: "Library Stool chair", price: "$90"},
-    {image: "/productPage/Image3.png", alt: "chair", name: "Library Stool chair", price: "$90"},
-    {image: "/productPage/Image4.png", alt: "chair", name: "Library Stool chair", price: "$90"},
-    {image: "/productPage/Image5.png", alt: "chair", name: "Library Stool chair", price: "$90"},
-]
+const products : productsType[] = await sanityFetch({query: fiveProducts})
+console.log(products)
+
   return (
     <div className='mt-10 mb-20'>
         <section className='flex justify-center'>
@@ -51,9 +44,9 @@ let featuredBoxes: pro[] = [
                 <span className='font-bold text-lg underline decoration-2 underline-offset-8 hover:bg-slate-300'>View all</span>
                 </div>
                 <section className='grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-5 gap-10'>
-                    {featuredBoxes.map((products) => {
+                    {products.map((product) => {
                       return(
-                        <ProductPage image={products.image} alt={products.alt} name={products.name} price={products.price} />
+                        <ProductPage image={product.imageUrl} alt={product.title} name={product.title} price={product.price}/>
                       )
                     })}
                 </section>

@@ -4,20 +4,15 @@ import FeaturedBoxes from './featuredBoxes'
 import New from './new'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { allproducts } from '@/sanity/lib/queries'
+import { productsType } from '@/sanity/schemaTypes/types'
+
 
 const Featured = async (props:any) => {
-    let heading;
+    let heading = "Featured Products";
     if(props.head == null){
         heading = "Featured Products"
     } else {
         heading = props.head
-    }
-
-    type productsType = {
-        title: string,
-        price: number,
-        imageUrl: string,
-        description?: string,
     }
 
     const products : productsType[] = await sanityFetch({query: allproducts})
@@ -33,7 +28,7 @@ const Featured = async (props:any) => {
                 <section className='grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4  gap-10'>
                     {products.map((product: productsType) => {
                         return(
-                            <FeaturedBoxes image={product.imageUrl} alt={product.title} desc={product.description} name={product.title} price={product.price} />
+                            <FeaturedBoxes image={product.imageUrl} alt={product.title} desc={product.category} name={product.title} price={product.price}/>
                         )
                     })}
                 </section>
