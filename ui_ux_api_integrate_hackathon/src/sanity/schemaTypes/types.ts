@@ -7,10 +7,19 @@ export type productsType = {
 }
 
 export type propsType = {
-    name: string,
+    name?: string,
     alt: string,
-    price: number,
+    price?: number,
     image: string
     desc?: string,
     id?: string
+  }
+
+export type twoType = {
+    imageUrl: string
+    title: string,
+  }
+
+  export type headType = {
+    head?: string
   }
