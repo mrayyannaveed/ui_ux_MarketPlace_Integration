@@ -20,7 +20,7 @@ const ProductPage = (props:propsType) => {
         <div className="pt-2 flex w-full px-4 md:px-2 lg:px-0 justify-between pb-2 bg-white">  
             <div className="flex flex-col justify-between w-full gap-2">
                 <span className=" text-base text-[]">{props.name}</span>
-                <p className=" text-lg text-[#000]">${props.price}</p>
+                <p className=" text-lg text-[#000]">{props.price}</p>
             </div>
             {/* <div className="relative">
           <div className="text-center mt-3 hidden absolute translate-x-[-50%] left-[50%]" id="btn">
