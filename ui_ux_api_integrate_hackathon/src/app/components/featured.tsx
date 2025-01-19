@@ -27,8 +27,11 @@ const Featured = async (props:any) => {
                 </div>
                 <section className='grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4  gap-10'>
                     {products.map((product: productsType) => {
+                        // if(product.slug != null && product.slug != undefined){
+                        //     product.slug = (product.slug).split(" ").join("-")
+                        // }
                         return(
-                            <FeaturedBoxes image={product.imageUrl} alt={product.title} desc={product.category} name={product.title} price={product.price}/>
+                            <FeaturedBoxes image={product.imageUrl} alt={product.title} desc={product.description} name={product.title} price={product.price} id={product.title}/>
                         )
                     })}
                 </section>

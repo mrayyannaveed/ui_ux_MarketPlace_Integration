@@ -42,6 +42,17 @@ export const fiveProducts = defineQuery(`
     }
     `)
 
-
-
-    
+    export default function getProducts(id: string){     
+        const proIdSlug = defineQuery(`*[_type == "products" && title == "${id}"]{
+    title,
+    price,
+    badge,
+    category,
+    description,
+    inventory,
+    tags,
+    "imageUrl": image.asset->url
+    }`
+)   
+return proIdSlug
+}

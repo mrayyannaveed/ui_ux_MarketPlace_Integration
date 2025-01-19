@@ -3,8 +3,7 @@ export type productsType = {
     price: number,
     imageUrl: string,
     description?: string,
-    category?: string
-    _ref?: string
+    slug?: string
 }
 
 export type propsType = {
@@ -13,5 +12,5 @@ export type propsType = {
     price: number,
     image: string
     desc?: string,
-    ref?: string
+    id?: string
   }
