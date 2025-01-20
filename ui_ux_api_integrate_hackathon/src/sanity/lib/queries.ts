@@ -56,17 +56,23 @@ export const tweProducts = defineQuery(`
     }
     `)
 
-    export default function getProducts(id: string){     
-        const proIdSlug = defineQuery(`*[_type == "products" && title == "${id}"]{
-    title,
-    price,
-    badge,
-    category,
-    description,
-    inventory,
-    tags,
-    "imageUrl": image.asset->url
-    }`
-)   
-return proIdSlug
-}
+    export default function getProducts(id?: string){ 
+            const proIdSlug = defineQuery(`*[(_type == "products" && title == "${id}") ||
+                 _type == "products" && _id == "${id}"]{
+                _id,
+        title,
+        price,
+        badge,
+        category,
+        description,
+        inventory,
+        tags,
+        "imageUrl": image.asset->url
+        }`
+    )   
+    return proIdSlug  
+    }
+
+//     export default function getbyId(productId: string){     
+        
+// }

@@ -54,7 +54,6 @@ import { useRouter } from 'next/navigation';
 
 const Featured = ({ head }: headType) => {
   const [products, setProducts] = useState<productsType[] | null>(null);
-//   console.log(products);
   const heading = head || "Featured Products";
 
   const router = useRouter()
@@ -64,7 +63,6 @@ const Featured = ({ head }: headType) => {
       try {
         const data = await sanityFetch({ query: allproducts });
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -90,7 +88,7 @@ const Featured = ({ head }: headType) => {
           <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10">
             {products.map((product: productsType) => (
               <FeaturedBoxes
-                key={product.title}
+                key={product._id}
                 image={product.imageUrl}
                 alt={product.title}
                 desc={product.description}

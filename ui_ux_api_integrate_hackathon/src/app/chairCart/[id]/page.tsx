@@ -9,14 +9,15 @@ import { sanityFetch } from '@/sanity/lib/fetch'
 import getProducts, { fiveProducts } from '@/sanity/lib/queries'
 import { client } from '@/sanity/lib/client'
 
-const Chair = async (props:any) => {
-  console.log(`This only `,props)
+const Chair = async ({params}: {params : {id: string}}) => {
+  // console.log(`This only `,props)
 
 const products : productsType[] = await sanityFetch({query: fiveProducts})
 // console.log(products)
 
 
-let proId = (props.params.id)?.split("-").join(" ")
+let proId = (params.id)?.split("-").join(" ")
+// let proId = props.params.id
 let fetch = getProducts(proId)
 
 const fetchPro = await sanityFetch({query: fetch})
@@ -41,7 +42,7 @@ const fetchPro = await sanityFetch({query: fetch})
                           <p>{product.description}</p>
                         </div>
                         <div className=''> 
-                        <Link href={"/addCart"}>     
+                        <Link href={`/addCart/${product._id}`}>     
                         <Button type='button' className='text-[#FFFFFF] w-[212px] h-[63px] flex items-center bg-[#029FAE] text-xl'>
                           
                         <Image className='w-[29px] h-[29px]' src={"/featured/Cart1.png"} alt='cart' width={400} height={400}></Image>
@@ -61,7 +62,7 @@ const fetchPro = await sanityFetch({query: fetch})
                         
                     {products.map((product) => {
                       return(
-                        <ProductPage image={product.imageUrl} alt={product.title} name={product.title} price={product.price}/>
+                        <ProductPage image={product.imageUrl} alt={product.title} name={product.title} price={product.price} id={product.title}/>
                       )
                     })}
                 </section>

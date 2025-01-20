@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button'
 import { propsType } from '@/sanity/schemaTypes/types'
 
 const ProductPage = (props:propsType) => {
+  let proid = (props.id)?.split(" ").join("-")
+  // console.log(`abc ${proid}`)
   return (
     <div>
         <div className="bg-[#F5F5F5]">
           <div className="flex justify-center items-center flex-col">
-            <Link href={"/chairCart"}><Image
+            <Link href={`/chairCart/${proid}`}><Image
               className=""
               src={props.image}
               alt={props.alt}

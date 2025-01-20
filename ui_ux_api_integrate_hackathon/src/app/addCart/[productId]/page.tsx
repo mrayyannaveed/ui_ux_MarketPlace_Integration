@@ -2,6 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import { Heart, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import getProducts from '@/sanity/lib/queries'
+import { sanityFetch } from '@/sanity/lib/fetch'
+import { productsType } from '@/sanity/schemaTypes/types'
 
 const Page = () => {
   return (

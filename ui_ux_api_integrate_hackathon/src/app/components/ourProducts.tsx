@@ -87,6 +87,7 @@ const OurProducts = () => {
                   alt={product.title}
                   name={product.title}
                   price={product.price}
+                  id={product.title}
                 />
               ))}
           </section>
