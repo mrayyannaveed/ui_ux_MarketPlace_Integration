@@ -9,7 +9,7 @@ import { propsType } from '@/sanity/schemaTypes/types'
 const FeaturedBoxes = (props:propsType) => {
   // console.log(props.id,props.price)
   let proid = (props.id)?.split(" ").join("-")
-  console.log(props.key)
+  // console.log(props.key)
   return (
     <div>
         <div className="bg-[#f1ede7] pb-3 shadow-lg text-ellipsis" id="btn_div">

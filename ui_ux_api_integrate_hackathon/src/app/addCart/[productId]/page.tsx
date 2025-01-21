@@ -5,9 +5,9 @@ import { Heart, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import getProducts from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/fetch'
-import { productsType } from '@/sanity/schemaTypes/types'
+import { propsType } from '@/sanity/schemaTypes/types'
 
-const Page = (props:productsType) => {
+const Page = () => {
     const [count, setCount] = useState(1);
 
   const inCount = () => {
@@ -19,7 +19,6 @@ const Page = (props:productsType) => {
       setCount(count - 1);
     }
   }
-    console.log(`props ${props}`)
   return (
     <div className='mt-10 mb-20'>
         <section className='flex justify-center'>
