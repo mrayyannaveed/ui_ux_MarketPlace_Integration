@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Heart, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -6,7 +7,19 @@ import getProducts from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { productsType } from '@/sanity/schemaTypes/types'
 
-const Page = () => {
+const Page = (props:productsType) => {
+    const [count, setCount] = useState(1);
+
+  const inCount = () => {
+    setCount(count + 1);
+  }
+
+  const deCount = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  }
+    console.log(`props ${props}`)
   return (
     <div className='mt-10 mb-20'>
         <section className='flex justify-center'>
@@ -22,15 +35,16 @@ const Page = () => {
                             <div className='grid gap-6 lg:gap-1'>
                                 <p>Library Stool Chair</p>
                                 <p className='text-[#757575] text-[15px]'>Ashen Slate/Cobalt Bliss</p>
-                                <div className='flex gap-8'>
+                                <div className='flex flex-col gap-1'>
                                 <span className='text-[#757575] flex gap-2 text-[15px]'>
                                     <span>Size</span>
                                     <span>L</span>
                                 </span>
-                                <span className='text-[#757575] flex gap-2 text-[15px]'>
-                                    <span>Quantity</span>
-                                    <span>1</span>
-                                </span>
+                                <div className="flex items-center gap-1">
+                                <Button onClick={deCount}>-</Button>
+                                <input type="number" value={count} className="w-12 text-center" />
+                                <Button onClick={inCount}>+</Button>
+                                </div>
                                 </div>
                                 <div className='flex gap-4'>
                                     <span><Heart/></span>
@@ -38,7 +52,7 @@ const Page = () => {
                                 </div>
                             </div>
                             <div>
-                                <p>MRP: $99</p>
+                                <p>MRP: ${99 * count}</p>
                             </div>
                             </div>
                         </div>
@@ -90,6 +104,8 @@ const Page = () => {
             </section>
         </section>
         </section>
+
+        
     </div>
   )
 }

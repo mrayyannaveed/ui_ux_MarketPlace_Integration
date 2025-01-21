@@ -23,6 +23,7 @@ let fetch = getProducts(proId)
 const fetchPro = await sanityFetch({query: fetch})
 // console.log(fetchPro)
 
+
   return (
     <div className='mt-10 mb-20'>
         <section className='flex justify-center'>
