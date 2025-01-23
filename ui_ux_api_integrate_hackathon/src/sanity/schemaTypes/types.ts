@@ -13,7 +13,7 @@ export type propsType = {
     image: string
     desc?: string,
     id?: string,
-    key?:string
+    key?:string,
   }
 
 export type twoType = {

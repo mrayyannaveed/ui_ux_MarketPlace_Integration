@@ -14,6 +14,23 @@ export const allproducts = defineQuery(`
     }
     `)
 
+export function getCartPro(id:string){
+    const cartProducts = defineQuery(`
+        *[_type == "products" && _id == "${id}"]{
+            title,
+            price,
+            priceWithoutDiscount,
+            badge,
+            category,
+            description,
+            inventory,
+            tags,
+            "imageUrl": image.asset->url
+            }
+            `)
+            return cartProducts
+}
+
 export const fourProducts = defineQuery(`
     *[_type == "products"][0..3]{
     title,
@@ -72,13 +89,29 @@ export const tweProducts = defineQuery(`
     return proIdSlug  
     }
 
-export const getProductss = (id: string) => `
-  *[_type == "product" && _id == "${id}"]{
+export const getProductss = (id?: string) =>
+{const slug = defineQuery(
+  `*[_type == "product" && _id == "${id}"]{
     _id,
     title,
-    description,
     price,
-    imageUrl,
+    badge,
     category,
-  }
-`;
+    description,
+    inventory,
+    tags,
+    "imageUrl": image.asset->url
+  }`
+)
+return slug
+}
+//      `
+//   *[_type == "product" && _id == "${id}"]{
+//     _id,
+//     title,
+//     description,
+//     price,
+//     imageUrl,
+//     category,
+//   }
+// `;
