@@ -88,30 +88,3 @@ export const tweProducts = defineQuery(`
     )   
     return proIdSlug  
     }
-
-export const getProductss = (id?: string) =>
-{const slug = defineQuery(
-  `*[_type == "product" && _id == "${id}"]{
-    _id,
-    title,
-    price,
-    badge,
-    category,
-    description,
-    inventory,
-    tags,
-    "imageUrl": image.asset->url
-  }`
-)
-return slug
-}
-//      `
-//   *[_type == "product" && _id == "${id}"]{
-//     _id,
-//     title,
-//     description,
-//     price,
-//     imageUrl,
-//     category,
-//   }
-// `;
