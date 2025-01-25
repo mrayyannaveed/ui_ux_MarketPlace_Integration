@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 const Logo = () => {
   return (
     <div>
@@ -9,12 +10,12 @@ const Logo = () => {
                   <p className="text-[20px] sm:text-[24px] md:text-[26px] font-medium">Comforty</p>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex gap-2 items-center">
-                    <Image className="h-[22px] w-[22px]" src={"/logo/Cart.png"} alt="cart" width={400} height={400}></Image>
+                  <Link href={'/cart'} className="flex gap-2 items-center">
+                    <Image className="h-[24px] w-[24px]" src={"/logo/Cart.png"} alt="cart" width={400} height={400}></Image>
                     <p className="text-xs font-medium">Cart</p>
-                  </div>
-                    <Image className="h-[22px] w-[22px]" src={"/logo/No.png"} alt="no" width={600} height={600}></Image>
-                  
+                  </Link>
+                    {/* <Image className="h-[22px] w-[22px]" src={"/logo/No.png"} alt="no" width={600} height={600}></Image>
+                   */}
                 </div>
             </section>
         </section>

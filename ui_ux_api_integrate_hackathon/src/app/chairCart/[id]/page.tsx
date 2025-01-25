@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -8,6 +10,8 @@ import { productsType } from '@/sanity/schemaTypes/types'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import getProducts, { fiveProducts } from '@/sanity/lib/queries'
 import { client } from '@/sanity/lib/client'
+import { addToCart } from '@/app/actions/actions'
+import Swal from 'sweetalert2'
 
 const Chair = async ({params}: {params : {id: string}}) => {
   // console.log(`This only `,props)
@@ -22,6 +26,18 @@ let fetch = getProducts(proId)
 
 const fetchPro = await sanityFetch({query: fetch})
 // console.log(fetchPro)
+
+const handleAddToCart = (e: React.MouseEvent, product: productsType) => {
+  e.preventDefault()
+  Swal.fire({
+    // position: "top-end",
+    icon: "success",
+    title: `${product.title} added to cart`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+  addToCart(product)
+}
 
 
   return (
@@ -44,7 +60,7 @@ const fetchPro = await sanityFetch({query: fetch})
                         </div>
                         <div className=''> 
                         <Link href={`/addCart/${product._id}`}>     
-                        <Button type='button' className='text-[#FFFFFF] w-[212px] h-[63px] flex items-center bg-[#029FAE] text-xl'>
+                        <Button type='button' className='text-[#FFFFFF] w-[212px] h-[63px] flex items-center bg-[#029FAE] text-xl' onClick={(e) => handleAddToCart(e,product)}>
                           
                         <Image className='w-[29px] h-[29px]' src={"/featured/Cart1.png"} alt='cart' width={400} height={400}></Image>
                           Add To Cart</Button></Link>

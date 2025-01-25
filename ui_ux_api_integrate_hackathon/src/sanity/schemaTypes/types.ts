@@ -3,7 +3,8 @@ export type productsType = {
     price: number,
     imageUrl: string,
     description?: string,
-    _id?: string
+    _id: string,
+    inventory: number
 }
 
 export type propsType = {

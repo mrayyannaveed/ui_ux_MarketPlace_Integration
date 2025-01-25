@@ -5,7 +5,7 @@ import AboutBrand from '../components/aboutBrand'
 import SectionHeading from '../components/sectionHeading'
 
 const AboutUs = () => {
-    let aboutBrand = [
+    let aboutBrand = [ 
         {
             images:"/aboutUS/delivery1.png",
             alts:"1",
