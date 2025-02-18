@@ -5,9 +5,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
-      <footer className='bg-[#FFFFFF] border-t-2 box-shadow: 0px 1px 0px 0px #E1E3E5 inset;
-'>
+
+      <footer className='bg-[#FFFFFF] border-t-2 box-shadow: 0px 1px 0px 0px '>
         <section className='flex justify-center'>
           <section className='w-[100vw]  gap-4 md:w-[95vw] lg:w-[95vw]'>
             <section className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16 xl:grid-cols-4  pt-16 pb-10'>
@@ -70,14 +69,14 @@ const Footer = () => {
             </section>
           </section>
         </section>
-      </footer>
       <section className='flex justify-center'>
         <section className='w-[90vw]  gap-4 sm:w-[85vw] md:w-[80vw] lg:w-[75vw] flex flex-col sm:flex-row items-center justify-between'>
           <div><p className='text-sm sm:text-base'>@ 2021 - Blogy - Designed & Develop by Zakirsoft</p></div>
           <div><Image className='w-[227px] h-[27px]' src={"/footer/Group13.png"} alt='paypal' width={400} height={400}></Image></div>
         </section>
       </section>
-    </div>
+      </footer>
+
   )
 }
 

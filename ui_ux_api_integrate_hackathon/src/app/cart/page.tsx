@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import Image from 'next/image';
 import { Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<productsType[]>([]);
@@ -53,6 +54,7 @@ const CartPage = () => {
     return cartItems.reduce((total, item) => total + item.price * item.inventory, 0);
   };
 
+   const router  = useRouter();
    const handleProceed = () => {
     Swal.fire({
       title: 'Proceed to checkout?',
@@ -65,6 +67,7 @@ const CartPage = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('Proceeded!', 'Your order has been successfully placed.', 'success');
+        router.push('/checkout');
         setCartItems([]);
       }
     });
@@ -117,14 +120,14 @@ const CartPage = () => {
             <span className="text-lg font-semibold">Total:</span>
             <span className="text-xl font-bold">${calculatedTotal().toFixed(2)}</span>
           </div>
-          <Link href={'/checkout'}>
+          {/* <Link href={'/checkout'}> */}
           <button
-            // onClick={handleProceed}
+            onClick={handleProceed}
             className="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             >
             Proceed to Checkout
           </button>
-            </Link>
+            {/* </Link> */}
         </div>
       )}
     </div>
